@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import PropTypes from 'prop-types'
 import Drawer from 'components/layouts/Drawer'
-import { mainListItems, secondaryListItems } from './menuOptions'
+import { MainListItems, SecondaryListItems } from './menuOptions'
 
 const Menu = ({open, setOpen, drawerwidth}) => {
   
@@ -40,9 +40,9 @@ const Menu = ({open, setOpen, drawerwidth}) => {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            <MainListItems/>
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            <SecondaryListItems/>
           </List>
         </Drawer>
       </Box>

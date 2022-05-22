@@ -1,11 +1,12 @@
 import { toast } from 'react-toastify'
-import { Navigate } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 
 import { setAxiosAuthToken, toastOnError } from 'utils/Utils'
 import { SET_TOKEN, SET_CURRENT_USER, UNSET_CURRENT_USER } from './authTypes'
 
 axios.defaults.baseURL = 'http://localhost/'
+toast.configure()
 
 export const setCurrentUser = (user) => (dispatch) => {
   localStorage.setItem('user', JSON.stringify(user))
@@ -33,15 +34,15 @@ export const unsetCurrentUser = () => (dispatch) => {
   })
 }
 
-export const logout = () => (dispatch) => {
+export const logout = (navigate, path) => (dispatch) => {
   dispatch(unsetCurrentUser())
   toast.success('Logout successful.')
-  return <Navigate to="/" />
+  return navigate(path)
 }
 
 export const login = (userData, redirectTo, navigate) => (dispatch) => {
   axios
-    .post('/api/token/', userData)
+    .post('token/', userData)
     .then((response) => {
       const { access, user } = response.data
       dispatch(setToken(access))
@@ -49,6 +50,7 @@ export const login = (userData, redirectTo, navigate) => (dispatch) => {
       if (redirectTo !== '') {
         navigate(redirectTo)
       }
+      toast.success('Login successful.')
     })
     .catch((error) => {
       dispatch(unsetCurrentUser())

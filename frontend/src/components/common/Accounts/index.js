@@ -1,23 +1,21 @@
 import React from 'react'
-import Grid from '@mui/material/Grid'
 import { Button, CardActionArea } from '@mui/material'
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
-import Paper from '@mui/material/Paper'
 import Card from '@mui/material/Card'
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router'
 
-const Accounts = ({ accountsArray }) => (
-  <Grid item xs={12} md={8} lg={9}>
-    <Paper
-      sx={{
-        p: 2,
-        display: 'flex',
-        flexDirection: 'column',
-      }}>
-      <Button variant="contained" size="small" color="primary" aria-label="add">
+const Accounts = ({ accountsArray }) => {
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  if (!isAuthenticated) {
+    return <Navigate to='/login' replace />
+  }
+  return (
+    <div>
+      <Button fullWidth variant="contained" size="small" color="primary" aria-label="add">
         Добавить&nbsp;
-        <AddCircleOutlinedIcon />
       </Button>
       {accountsArray.map((account) => (
         <Card
@@ -31,9 +29,9 @@ const Accounts = ({ accountsArray }) => (
           </CardActionArea>
         </Card>
       ))}
-    </Paper>
-  </Grid>
-)
+    </div>
+  )
+}
 
 Accounts.propTypes = {
   accountsArray: PropTypes.arrayOf(PropTypes.string)

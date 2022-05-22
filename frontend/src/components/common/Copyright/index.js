@@ -18,7 +18,7 @@ const Copyright = ({sx}) => (
 )
 
 Copyright.propTypes = {
-  sx: PropTypes.string,
+  sx: PropTypes.objectOf(PropTypes.any) // eslint-disable-line react/forbid-prop-types
 }
 
 Copyright.defaultProps = {

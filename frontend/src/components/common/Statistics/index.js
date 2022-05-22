@@ -1,10 +1,13 @@
 import * as React from 'react'
+import { useSelector } from 'react-redux'
 import Link from '@mui/material/Link'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
 import Title from '../Title'
 
 // Generate Order Data
@@ -28,41 +31,49 @@ const Statistics = () => {
   const onClick = (event) => {
     event.preventDefault()
   }
-
+  const isAuthenticated = useSelector( 
+    state => state.auth.isAuthenticated
+  )
+  if (!isAuthenticated) {
+    return null
+  }
+  
   return (
-    <>
-      <Title>Статистика</Title>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Дата парсинга</TableCell>
-            <TableCell>Аккаунт</TableCell>
-            <TableCell>Целевая Группа</TableCell>
-            <TableCell align="right">Конвкрсия</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.accountName}</TableCell>
-              <TableCell>{row.parsedGroup}</TableCell>
-              <TableCell 
-                align="right">
-                {`${row.parsedUsersNum} чел.`}
-              </TableCell>
+    <Grid item xs={12}>
+      <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+        <Title>Статистика</Title>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Дата парсинга</TableCell>
+              <TableCell>Аккаунт</TableCell>
+              <TableCell>Целевая Группа</TableCell>
+              <TableCell align="right">Конвкрсия</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Link 
-        color="primary" 
-        href="#" 
-        onClick={onClick} 
-        sx={{ mt: 3 }}>
-        Посмотреть всю историю
-      </Link>
-    </>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell>{row.date}</TableCell>
+                <TableCell>{row.accountName}</TableCell>
+                <TableCell>{row.parsedGroup}</TableCell>
+                <TableCell 
+                  align="right">
+                  {`${row.parsedUsersNum} чел.`}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <Link 
+          color="primary" 
+          href="#" 
+          onClick={onClick} 
+          sx={{ mt: 3 }}>
+          Посмотреть всю историю
+        </Link>
+      </Paper>
+    </Grid>
   )
 }
 

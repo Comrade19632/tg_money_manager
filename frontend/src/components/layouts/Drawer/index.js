@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open, drawerWidth }) => ({
+})(({ theme, open, drawerwidth }) => ({
   '& .MuiDrawer-paper': {
     position: 'relative',
     whiteSpace: 'nowrap',
-    width: drawerWidth,
+    width: drawerwidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -31,7 +31,7 @@ const Drawer = styled(MuiDrawer, {
 Drawer.propTypes = {
   theme: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  drawerWidth: PropTypes.number.isRequired,
+  drawerwidth: PropTypes.number.isRequired,
 }
 
 export default Drawer

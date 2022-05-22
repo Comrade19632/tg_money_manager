@@ -45,7 +45,6 @@ const Header = ({ toggleDrawer, open, unreadMessages, drawerwidth}) => (
         </Badge>
       </IconButton>
     </Toolbar>
-    {/* <Outlet /> */}
   </AppBar>
 )
 
@@ -53,7 +52,7 @@ Header.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   unreadMessages: PropTypes.number.isRequired,
-  drawerwidth: PropTypes.number.isRequired
+  drawerwidth: PropTypes.number.isRequired,
 }
 
 export default Header
