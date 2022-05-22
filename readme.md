@@ -29,23 +29,6 @@
 - Запускаем проект
 - ```./bin/manage createsuperuser ```
 - Вводим все запрашиваемые данные и логинимся.
-10. По желанию установить себе alias для git.
-```
-[user]
-        name = Имя Фамилия
-        email = email
-[alias]
-    co = checkout
-    cp = cherry-pick
-    br = branch
-    ci = commit
-    st = status
-    ap = add -p
-    aa = add -A
-    undo = reset --soft HEAD~1
-    oneline = log --format=oneline
-    set-upstream = !git branch --set-upstream-to=origin/git symbolic-ref --short HEAD
-```
 
 # Работа с проектом
 - ```./bin/dev``` - запуск проекта
