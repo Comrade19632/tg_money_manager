@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Run containers
+      run: docker-compose -f docker-compose.dev.yml up --build --remove-orphan
+
+    - name: Run black
+      run: docker exec -w /app/backend -i backend_container black . --check --verbose
+
+    - name: Run isort
+      run: docker exec -w /app/backend -i backend_container isort -c
+
+    - name: Stop containers
+      if: always()
+      run:  docker-compose -f docker-compose.dev.yml down

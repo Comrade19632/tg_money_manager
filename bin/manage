@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+args="$1"
+
+docker exec -it backend_container python3 backend/server/manage.py $args

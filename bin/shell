@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker exec -it backend_container python3 backend/server/manage.py shell

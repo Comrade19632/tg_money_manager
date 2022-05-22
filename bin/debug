@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+args="$1"
+
+docker attach $(if [ "$args" == "" ]; then echo "backend_container" ; else echo "$args"; fi) 

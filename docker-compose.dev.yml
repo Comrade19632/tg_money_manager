@@ -1,0 +1,78 @@
+version: '2'
+
+services:
+    db:
+        image: postgres:13.0-alpine
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        env_file:
+            - ./.env.dev
+    nginx: 
+        restart: unless-stopped
+        build:
+            context: .
+            dockerfile: ./docker/nginx/Dockerfile
+        ports:
+            - 80:80
+        volumes:
+            - static_volume:/app/backend/server/staticfiles
+            - media_volume:/app/backend/server/mediafiles
+            - ./docker/nginx/development:/etc/nginx/conf.d
+        depends_on: 
+            - backend
+    backend:
+        container_name: backend_container
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+        entrypoint: /app/docker/backend/wsgi-entrypoint.dev.sh
+        volumes:
+            - .:/app
+            - static_volume:/app/backend/server/staticfiles
+            - media_volume:/app/backend/server/mediafiles
+        expose:
+            - 8000      
+        env_file:
+            - ./.env.dev
+        depends_on:
+            - db
+        
+    redis:
+        image: "redis:alpine"
+
+    celery:
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+        entrypoint: /app/docker/backend/celery-entrypoint.dev.sh
+        volumes:
+            - .:/app
+        env_file:
+        - ./.env.dev
+        depends_on:
+        - db
+        - backend
+        - redis
+
+    telegram-bot:
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+        command: watchmedo auto-restart --recursive -d . -p '*.py' -- python3 backend/server/manage.py telegram_bot
+        stdin_open: true
+        tty: true
+        volumes:
+            - .:/app
+        env_file:
+        - ./.env.dev
+        depends_on:
+        - db
+        - redis
+
+volumes:
+    postgres_data: 
+    static_volume: 
+    media_volume:
