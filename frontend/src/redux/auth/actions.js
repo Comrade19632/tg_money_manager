@@ -3,15 +3,14 @@ import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 
 import { setAxiosAuthToken, toastOnError } from 'utils/Utils'
-import { SET_TOKEN, SET_CURRENT_USER, UNSET_CURRENT_USER } from './authTypes'
+import { ACTION_TYPES } from './constants'
 
-axios.defaults.baseURL = 'http://localhost/'
 toast.configure()
 
 export const setCurrentUser = (user) => (dispatch) => {
   localStorage.setItem('user', JSON.stringify(user))
   dispatch({
-    type: SET_CURRENT_USER,
+    type: ACTION_TYPES.SET_CURRENT_USER,
     payload: user,
   })
 }
@@ -20,7 +19,7 @@ export const setToken = (token) => {
   setAxiosAuthToken(token)
   localStorage.setItem('token', token)
   return {
-    type: SET_TOKEN,
+    type: ACTION_TYPES.SET_TOKEN,
     payload: token,
   }
 }
@@ -30,7 +29,7 @@ export const unsetCurrentUser = () => (dispatch) => {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
   dispatch({
-    type: UNSET_CURRENT_USER,
+    type: ACTION_TYPES.UNSET_CURRENT_USER,
   })
 }
 
