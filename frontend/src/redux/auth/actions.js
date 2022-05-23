@@ -7,6 +7,7 @@ import { ACTION_TYPES } from './constants'
 
 toast.configure()
 
+
 export const setCurrentUser = (user) => (dispatch) => {
   localStorage.setItem('user', JSON.stringify(user))
   dispatch({
@@ -33,22 +34,18 @@ export const unsetCurrentUser = () => (dispatch) => {
   })
 }
 
-export const logout = (navigate, path) => (dispatch) => {
+export const logout = () => (dispatch) => {
   dispatch(unsetCurrentUser())
   toast.success('Logout successful.')
-  return navigate(path)
 }
 
-export const login = (userData, redirectTo, navigate) => (dispatch) => {
+export const login = (userData) => (dispatch) => {
   axios
     .post('token/', userData)
     .then((response) => {
       const { access, user } = response.data
       dispatch(setToken(access))
       dispatch(setCurrentUser(user))
-      if (redirectTo !== '') {
-        navigate(redirectTo)
-      }
       toast.success('Login successful.')
     })
     .catch((error) => {
