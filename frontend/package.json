@@ -35,11 +35,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": " eslint ./src/",
-    "lint:fix": "eslint --fix src/"
+    "lint": "npx eslint --ext .jsx --ext .js src/",
+    "lint:fix": "npx eslint --ext .jsx --ext .js --fix src/"
   },
   "eslintConfig": {
     "extends": [
+      "eslint:recommended",
       "react-app",
       "react-app/jest"
     ]
