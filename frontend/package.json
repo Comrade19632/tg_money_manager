@@ -35,11 +35,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": " eslint ./src/",
-    "lint:fix": "eslint --fix src/"
+    "lint": "npx eslint --ext .jsx --ext .js src/",
+    "lint:fix": "npx eslint --ext .jsx --ext .js --fix src/"
   },
   "eslintConfig": {
     "extends": [
+      "eslint:recommended",
       "react-app",
       "react-app/jest"
     ]
@@ -57,7 +58,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.13.0",
+    "eslint": "^8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.5.0",
@@ -66,8 +67,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-arrow-functions": "^3.1.4",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2"
   }
 }

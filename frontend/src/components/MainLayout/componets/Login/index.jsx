@@ -7,6 +7,9 @@ import DevLoginForm from './components/DevLoginForm'
 import TelegramLoginButton from './components/TelegramLoginButton'
 
 const Login = () => {
+
+  const dispatch = useDispatch()
+  
   const { 
     isAuthenticated,
   } = useSelector(state =>({
@@ -16,8 +19,6 @@ const Login = () => {
   if (isAuthenticated) {
     return <Navigate to="/" replace />
   }
-
-  const dispatch = useDispatch()
 
   const handleLogin = (userData) => dispatch(login(userData))
 

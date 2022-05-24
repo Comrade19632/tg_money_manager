@@ -5,6 +5,7 @@
     },
     "extends": [
         "airbnb",
+        "airbnb/hooks",
         "prettier"
     ],
     "parserOptions": {
@@ -20,7 +21,7 @@
     ],
     "rules": {
         "no-unused-vars": "warn",
-        "no-console": "off",
+        "no-console": "warn",
         "func-names": "off",
         "no-process-exit": "off",
         "react/function-component-definition": 0,
@@ -50,6 +51,11 @@
                     ".jsx"
                 ]
              }
-        ]
+        ],
+        "no-multiple-empty-lines": ["error", { 
+            "max": 1, 
+            "maxEOF": 1,
+            "maxBOF": 1
+        }]
     }
 }

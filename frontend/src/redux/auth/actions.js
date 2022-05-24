@@ -7,7 +7,6 @@ import { ACTION_TYPES } from './constants'
 
 toast.configure()
 
-
 export const setCurrentUser = (user) => (dispatch) => {
   localStorage.setItem('user', JSON.stringify(user))
   dispatch({

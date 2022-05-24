@@ -6,7 +6,6 @@ const initialState = {
   token: '',
 }
   
-  
 const authReducer = (state = initialState, action = {}) => {
   switch (action.type) {
   case ACTION_TYPES.SET_TOKEN:
