@@ -1,15 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router'
-import {login} from 'redux/auth/actions'
+import { login } from 'redux/auth/actions'
 
 import DevLoginForm from './components/DevLoginForm'
 import TelegramLoginButton from './components/TelegramLoginButton'
+import style from './index.module.sass'
 
 const Login = () => {
-  const { 
+  const {
     isAuthenticated,
-  } = useSelector(state =>({
+  } = useSelector(state => ({
     isAuthenticated: state.auth.isAuthenticated,
   }))
 
@@ -21,7 +22,11 @@ const Login = () => {
 
   const handleLogin = (userData) => dispatch(login(userData))
 
-  return (process.env.NODE_ENV === 'production') ? <TelegramLoginButton dataOnauth={handleLogin} /> : <DevLoginForm handleLogin={handleLogin}/>
+  return (
+    <div className={style.container}>
+      {(process.env.NODE_ENV === 'production') ? <TelegramLoginButton dataOnauth={handleLogin} /> : <DevLoginForm handleLogin={handleLogin} />}
+    </div>
+  )
 }
 
 export default Login
