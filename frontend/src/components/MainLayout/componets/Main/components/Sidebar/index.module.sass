@@ -2,5 +2,11 @@
   display: flex
   flex-direction: column
   background: #FCFCFC
-  flex: 1
   padding: 24px
+  width: 80px
+  transition-property: top,bottom,width
+  transition-duration: .2s,.2s,.35s
+  transition-timing-function: linear,linear,ease
+
+  &.active
+    width: 200px

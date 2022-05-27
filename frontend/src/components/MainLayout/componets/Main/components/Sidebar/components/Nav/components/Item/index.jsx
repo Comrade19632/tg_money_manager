@@ -14,7 +14,7 @@ Item.propTypes = {
 }
 
 Item.defaultProps = {
-  active: true,
+  active: false,
 }
 
 export default Item
