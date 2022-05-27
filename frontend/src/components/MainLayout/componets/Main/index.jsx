@@ -1,24 +1,16 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { logout } from 'redux/auth/actions'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import Content from './components/Content'
+import style from './index.module.sass'
 
-const Main = () => {
-  const {
-    user,
-  } = useSelector(state => ({
-    user: state.auth.user,
-  }))
-
-  const dispatch = useDispatch()
-  
-  const onClick = () => dispatch(logout())
-
-  return (
-    <>
-      <div>You are auth as {user.telegram_id}</div>
-      <button onClick={onClick} type='button'>Logout</button>
-    </>
-  )
-}
-
+const Main = () => (
+  <div className={style.main}>
+    <Sidebar/>
+    <div className={style.pageInner}>
+      <Header/>
+      <Content/>
+    </div>
+  </div>
+)
 export default Main

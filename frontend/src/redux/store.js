@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunkMiddleWare from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
+// eslint-disable-next-line 
 import { isEmpty } from 'lodash'
 import { setToken, setCurrentUser } from './auth/actions'
 import authReducer from './auth/reducers'
