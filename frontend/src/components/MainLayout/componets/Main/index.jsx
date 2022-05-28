@@ -11,7 +11,7 @@ const Main = () => {
     <div className={style.main}>
       <Sidebar isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
       <div className={style.pageInner}>
-        <Header setSidebarActive={setSidebarActive} />
+        <Header isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
         <Content />
       </div>
     </div>
