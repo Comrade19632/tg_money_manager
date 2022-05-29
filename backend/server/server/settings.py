@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     #
     "apps.telegram_bot",
     "apps.users",
+    "apps.accountant",
 ]
 
 DEFAULT_RENDERER_CLASSES = ("rest_framework.renderers.JSONRenderer",)
