@@ -2,7 +2,7 @@ from django.db.models import CASCADE, CharField, ForeignKey, IntegerField
 
 from common.models import ActiveModel, TimeStampedModel
 
-from .type import Type
+from ..enums import Type
 
 
 class Category(ActiveModel, TimeStampedModel):

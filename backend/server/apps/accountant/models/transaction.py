@@ -3,7 +3,7 @@ from django.utils.timezone import now
 
 from common.models import TimeStampedModel
 
-from .type import Type
+from ..enums import Type
 
 
 class Transaction(TimeStampedModel):
@@ -13,6 +13,7 @@ class Transaction(TimeStampedModel):
     type = IntegerField(choices=Type.choices, default=Type.OUTCOME)
     date = DateField(default=now)
     is_monthly = BooleanField(default=False)
+    is_correction = BooleanField(default=False)
 
     def __str__(self):
         return f"{self.category.title} {self.amount}" if self.category else self.amount
