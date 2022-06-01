@@ -8,7 +8,10 @@ import TelegramLoginButton from './components/TelegramLoginButton'
 import style from './index.module.sass'
 
 const Login = () => {
-  const {
+
+  const dispatch = useDispatch()
+  
+  const { 
     isAuthenticated,
   } = useSelector(state => ({
     isAuthenticated: state.auth.isAuthenticated,
@@ -17,8 +20,6 @@ const Login = () => {
   if (isAuthenticated) {
     return <Navigate to="/" replace />
   }
-
-  const dispatch = useDispatch()
 
   const handleLogin = (userData) => dispatch(login(userData))
 

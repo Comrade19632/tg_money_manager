@@ -43,7 +43,17 @@ const TelegramLoginButton = ({
 
       instance.current.appendChild(script)
     }
-  }, [instance])
+  }, [
+    instance, 
+    botName,
+    buttonSize,
+    cornerRadius,
+    dataAuthUrl,
+    dataOnauth,
+    lang,
+    requestAccess,
+    usePic,
+  ])
 
   return (
     <div ref={instance} className={className} />
