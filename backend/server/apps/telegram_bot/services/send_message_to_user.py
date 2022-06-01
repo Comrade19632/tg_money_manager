@@ -1,5 +1,6 @@
-from aiogram import Bot
 from django.conf import settings
+
+from aiogram import Bot
 
 
 async def send_message_to_user(telegram_id, text):

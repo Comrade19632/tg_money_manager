@@ -1,4 +1,3 @@
-
 from aiogram import types
 
 from apps.telegram_bot.management.loaders.telegram_bot_loader import dp

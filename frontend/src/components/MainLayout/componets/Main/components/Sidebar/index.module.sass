@@ -1,0 +1,23 @@
+@import "components/variables"
+
+.sidebar
+  display: flex
+  flex-direction: column
+  background: #FCFCFC
+  padding: 24px
+  width: 80px
+  transition-property: top,bottom,width
+  transition-duration: .2s,.2s,.35s
+  transition-timing-function: linear,linear,ease
+  overflow: hidden
+
+  @media screen and (max-width: $mobile) 
+      width: 0
+      padding: 0
+  
+
+  &.active
+    width: 200px
+
+    @media screen and (max-width: $mobile) 
+      width: 70vw
