@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import useWidth from './use-width'
+import useWidth from './useWidth'
 
 export const DEVICES = {
   MOBILE: 'MOBILE',
