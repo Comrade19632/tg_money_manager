@@ -4,7 +4,6 @@ import axios from 'axios'
 import ProtectedRoute from 'components/ProtectedRoute'
 import Main from './componets/Main'
 import Login from './componets/Login'
-import NotFound from './componets/NotFound'
 
 const MainLayout = () => {
 
@@ -19,13 +18,12 @@ const MainLayout = () => {
   return (
     <div>
       <Routes>
-        <Route exact path='/' element={
+        <Route exact path='/login' element={<Login />} />
+        <Route path='*' element={
           <ProtectedRoute>
             <Main />
           </ProtectedRoute>
         } />
-        <Route path='login' element={<Login />} />
-        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   )
