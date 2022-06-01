@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import Item from './components/Item'
 import style from './index.module.sass'
 import CategoryIcon from './NavigationIcones/CategoryIcon'
@@ -15,9 +17,11 @@ const Nav = () => (
         name='Мой Профиль' 
         icon={<ProfileIcon />} 
         active />
-      <Item 
-        name='Мои катекории' 
-        icon={<CategoryIcon />} />
+      <Link to='/categories'>
+        <Item 
+          name='Мои катекории' 
+          icon={<CategoryIcon />} />
+      </Link>
       <Item 
         name='Мои данные' 
         icon={<ProfileInfoIcon />} />

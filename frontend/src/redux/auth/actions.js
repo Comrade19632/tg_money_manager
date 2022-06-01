@@ -35,6 +35,8 @@ export const unsetCurrentUser = () => (dispatch) => {
 
 export const logout = () => (dispatch) => {
   dispatch(unsetCurrentUser())
+  localStorage.removeItem('accessToken')
+  localStorage.removeItem('refreshToken')
   toast.success('Logout successful.')
 }
 
@@ -42,7 +44,10 @@ export const login = (userData) => (dispatch) => {
   axios
     .post('token/', userData)
     .then((response) => {
-      const { access, user } = response.data
+      const { refresh, access, user } = response.data
+      localStorage.setItem('accessToken', access)
+      localStorage.setItem('refreshToken', refresh)
+      
       dispatch(setToken(access))
       dispatch(setCurrentUser(user))
       toast.success('Login successful.')
