@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import style from './index.module.sass'
 import logo from './logo-dark.png'
 
-
 const Logo = ({ isSidebarActive }) => (
   <a className={style.logo} href='/'>
     <img className={classNames({

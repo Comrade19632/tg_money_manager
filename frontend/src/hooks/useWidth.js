@@ -8,7 +8,7 @@ const getWidth = () => window.innerWidth
 export default () => {
   const [width, setWidth] = useState(getWidth)
 
-  const updateWidth = useCallback(debounce(() => setWidth(getWidth), UPDATE_WIDTH_TIMEOUT), [setWidth])
+  const updateWidth = useCallback(() => debounce(() => setWidth(getWidth), UPDATE_WIDTH_TIMEOUT), [setWidth])
 
   useEffect(() => {
     window.addEventListener('resize', updateWidth)
