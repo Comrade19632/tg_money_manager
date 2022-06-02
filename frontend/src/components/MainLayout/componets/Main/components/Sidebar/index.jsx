@@ -1,11 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
-import useMedia, { DEVICES } from 'hooks/use-media'
+import useMedia, { DEVICES } from 'hooks/useMedia'
 import Logo from './components/Logo'
 import Nav from './components/Nav'
 import style from './index.module.sass'
-
 
 const Sidebar = ({ isSidebarActive, setSidebarActive }) => {
   const device = useMedia()

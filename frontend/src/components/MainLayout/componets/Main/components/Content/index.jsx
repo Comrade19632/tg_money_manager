@@ -4,7 +4,6 @@ import style from './index.module.sass'
 import Overview from './components/Overview'
 import NotFound from './components/NotFound'
 
-
 const Content = () => (
   <div className={style.content}>
     <Routes>
