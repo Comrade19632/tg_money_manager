@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import Item from './components/Item'
 import style from './index.module.sass'
@@ -13,11 +14,13 @@ import TableIcon from './NavigationIcones/TableIcon'
 const Nav = ({isSidebarActive}) => (
   <nav className={style.nav}>
     <ul>
-      <Item 
-        isSidebarActive={isSidebarActive}
-        name='Мой Профиль' 
-        icon={<ProfileIcon />} 
-        active />
+      <Link to='/'>
+        <Item 
+          isSidebarActive={isSidebarActive}
+          name='Мой Профиль' 
+          icon={<ProfileIcon />} 
+          active />
+      </Link>
       <Link to='/categories'>
         <Item
           isSidebarActive={isSidebarActive}

@@ -1,36 +1,36 @@
-.container
-  border-radius: 40px
-  margin: 20px
-  max-width: 100px
-  max-height: 100px
-  text-align: center
+@import "components/variables"
+
+.category
   position: relative
+  width: 100px
+  height: 120px
+  padding: 5px
+  text-align: center
 
   svg
     height: 60px
     width: 60px
-    padding: 10px
     border-radius: 40px
-    transition-duration: 300ms
+    padding: 10px
     color: grey
     background-color: #f5f5f5
     border: solid 2px #f5f5f5
+    transition-duration: 300ms
 
     &:hover
       border-color: blue
       color: blue
       background-color: white
 
-  .deleteIcon
+  .category__deleteIcon
+    position: absolute
     height: 20px
     width: 20px
-    position: absolute
     z-index: 2
     background-color: inherit
     border: solid 1px white
-    box-shadow: 5px 5px 5px brown
+    box-shadow: 5px 5px 5px grey
     padding: 0
-    margin: 0
     transition-duration: 300ms
 
     &:hover,
@@ -40,16 +40,14 @@
       color: red
       border-color: red
 
-  button
-    height: 100px
-    width: 100px
-    border-radius: 40px
-    border: none
+  .category__interactionButton
+    display: absolute
+    z-index: -1
     background-color: inherit
+    border: none
 
-  .category
-    display: inline
+  .category__title
     font-size: 8pt
-    margin: 0 auto 10px
+    text-align: center
     text-transform: uppercase
     font-weight: 700

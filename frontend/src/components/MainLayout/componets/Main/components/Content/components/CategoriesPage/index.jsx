@@ -38,19 +38,19 @@ const CategoriesPage = () => {
 
   return (
     <section className={style.container}>
-      <main className={style.main}>
-        {categoryList.map(category => 
-          <CategoryField 
-            title={category.title} 
-            key={category.id + category.title} 
-            onClickDelete={() => onClickDelete(category.id)}
-            icon={<CashIcon />} />
-        )}
+      {categoryList.map(category => 
         <CategoryField 
-          hasDeleteIcon={false}
-          onClick={addNewCategory}
-        />
-      </main>
+          className={style.container__elem}
+          title={category.title} 
+          key={category.id + category.title} 
+          onClickDelete={() => onClickDelete(category.id)}
+          icon={<CashIcon  />} />
+      )}
+      <CategoryField 
+        className={style.container__elem}
+        hasDeleteIcon={false}
+        onClick={addNewCategory}
+      />
     </section>
   )
 }
