@@ -38,7 +38,6 @@ const CategoriesPage = () => {
 
   return (
     <section className={style.container}>
-      <header>мои категории</header>
       <main className={style.main}>
         {categoryList.map(category => 
           <CategoryField 
