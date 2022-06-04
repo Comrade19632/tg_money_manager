@@ -1,76 +1,10 @@
 import React from 'react'
+import PeriodStatistic from './components/PeriodStatistic'
+import style from './index.module.sass'
 
 const Overview = () => (
-  <div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
-    <div>test</div>
+  <div className={style.overview}>
+    <PeriodStatistic/>
   </div>
 )
 

@@ -3,18 +3,20 @@ from django.utils.timezone import now
 
 from common.models import TimeStampedModel
 
-from ..enums import Type
+from ..enums import EnumType
 
 
 class Transaction(TimeStampedModel):
     amount = IntegerField(default=0)
     user = ForeignKey("users.User", on_delete=CASCADE)
-    category = ForeignKey("accountant.Category", on_delete=CASCADE)
-    type = IntegerField(choices=Type.choices, default=Type.OUTCOME)
+    category = ForeignKey(
+        "accountant.Category", on_delete=CASCADE, null=True, blank=True
+    )
+    enum_type = IntegerField(choices=EnumType.choices, default=EnumType.OUTCOME)
     date = DateField(default=now)
     is_monthly = BooleanField(default=False)
     is_correction = BooleanField(default=False)
     title = CharField(max_length=128, null=True, blank=True)
 
-    def __str__(self):
-        return f"{self.category.title} {self.amount}" if self.category else self.amount
+    class Meta:
+        ordering = ("date",)
