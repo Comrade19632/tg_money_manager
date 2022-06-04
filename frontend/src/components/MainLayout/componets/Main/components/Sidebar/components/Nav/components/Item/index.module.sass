@@ -17,8 +17,18 @@
   svg
     height: 30px
     width: 30px
-    margin: 0 10px
+    margin-left: 10px
+    overflow: visible
 
   &.active
     background: #EFEFEF
     box-shadow: inset 0px -2px 1px rgb(0 0 0 / 5%), inset 0px 1px 1px #ffffff
+
+  .name
+    opacity: 0
+    transition: transform .3s ease 0s,opacity .3s ease 0s,-webkit-transform .3s ease 0s
+
+    &.activeSidebar
+      opacity: 1
+      -webkit-transform: translate3d(+10px,0,0)
+      transform: translate3d(+10px,0,0)

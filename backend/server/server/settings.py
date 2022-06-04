@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+from datetime import timedelta
 from pathlib import Path
 
 
@@ -156,3 +157,7 @@ CELERY_RESULT_BACKEND = "redis://redis:6379"
 
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", None)
 TELEGRAM_MANUAL_BOT_TOKEN = os.environ.get("TELEGRAM_MANUAL_BOT_TOKEN", None)
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
+}

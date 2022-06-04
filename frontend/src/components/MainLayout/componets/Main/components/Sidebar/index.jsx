@@ -27,7 +27,7 @@ const Sidebar = ({ isSidebarActive, setSidebarActive }) => {
         [style.active]: isSidebarActive
       })}>
       <Logo isSidebarActive={isSidebarActive} />
-      <Nav />
+      <Nav isSidebarActive={isSidebarActive} />
     </div>
   )
 }

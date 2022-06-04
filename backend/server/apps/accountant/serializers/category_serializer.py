@@ -6,8 +6,6 @@ from ..models import Category
 
 
 class CategorySerializer(ModelSerializer):
-    user = UserSerializer(read_only=True)
-
     def save(self, user, **kwargs):
         return super().save(user=user, **kwargs)
 
@@ -16,6 +14,5 @@ class CategorySerializer(ModelSerializer):
         fields = (
             "id",
             "title",
-            "type",
-            "user",
+            "enum_type",
         )
