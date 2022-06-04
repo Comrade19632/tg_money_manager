@@ -1,13 +1,19 @@
+@import "components/variables"
+  
 .logo
   display: flex
   align-content: center
   justify-content: center
   align-items: center
+  margin-bottom: 20px
+
+  @media screen and (max-width: $mobile) 
+    margin-top: 24px
+    padding: 0
 
   img
     display: block
     width: 48px
-    margin-bottom: 48px
     transition-duration: 0.8s
     transition-property: transform
 
