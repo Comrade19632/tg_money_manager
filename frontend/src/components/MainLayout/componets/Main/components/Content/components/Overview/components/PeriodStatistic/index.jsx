@@ -7,7 +7,6 @@ import usePeriodStatistic from './hooks/usePeriodStatistic'
 import style from './index.module.sass'
 import DateSelect from './components/DateSelect'
 
-
 const PeriodStatistic = () => {
   const {
     getPeriodStatisticData,
@@ -48,7 +47,6 @@ const PeriodStatistic = () => {
   useEffect(() => {
     getPeriodStatisticData({ startDate: dates.value.startDate, endDate: dates.value.endDate })
   }, [getPeriodStatisticData, dates])
-
 
   const items = [
     {

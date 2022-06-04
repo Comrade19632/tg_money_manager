@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Item from './components/Item'
 import style from './index.module.sass'
 import CategoryIcon from './NavigationIcones/CategoryIcon'
@@ -8,30 +9,40 @@ import ProfileIcon from './NavigationIcones/ProfileIcon'
 import ProfileInfoIcon from './NavigationIcones/ProfileInfoIcon'
 import TableIcon from './NavigationIcones/TableIcon'
 
-const Nav = () => (
+const Nav = ({isSidebarActive}) => (
   <nav className={style.nav}>
     <ul>
       <Item 
+        isSidebarActive={isSidebarActive}
         name='Мой Профиль' 
         icon={<ProfileIcon />} 
         active />
-      <Item 
+      <Item
+        isSidebarActive={isSidebarActive}
         name='Мои катекории' 
         icon={<CategoryIcon />} />
-      <Item 
+      <Item
+        isSidebarActive={isSidebarActive}
         name='Мои данные' 
         icon={<ProfileInfoIcon />} />
-      <Item 
+      <Item
+        isSidebarActive={isSidebarActive}
         name='Выйти' 
         icon={<ExitIcon />} />
-      <Item 
+      <Item
+        isSidebarActive={isSidebarActive}
         name='Графики' 
         icon={<GraphIcon />} />
-      <Item 
+      <Item
+        isSidebarActive={isSidebarActive}
         name='Таблицы' 
         icon={<TableIcon />} />
     </ul>
   </nav>
 )
+
+Nav.propTypes = {
+  isSidebarActive: PropTypes.bool.isRequired,
+}
 
 export default Nav

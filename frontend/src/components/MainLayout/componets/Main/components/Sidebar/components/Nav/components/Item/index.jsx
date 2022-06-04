@@ -3,12 +3,16 @@ import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import style from './index.module.sass'
 
-const Item = ({ active, name, icon, }) => (
+const Item = ({ active, name, icon, isSidebarActive }) => (
   <li className={classnames(style.item, {
     [style.active]: active,
   })}>
     {icon}
-    {name}
+    <span className={classnames(style.name, {
+      [style.activeSidebar]: isSidebarActive,
+    })}>
+      {name}
+    </span>
   </li>
 )
 
@@ -16,6 +20,7 @@ Item.propTypes = {
   active: PropTypes.bool,
   name: PropTypes.string,
   icon: PropTypes.element,
+  isSidebarActive: PropTypes.bool.isRequired,
 }
 
 Item.defaultProps = {
