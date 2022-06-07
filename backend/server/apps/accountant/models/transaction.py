@@ -1,4 +1,12 @@
-from django.db.models import CASCADE, BooleanField, CharField, DateField, ForeignKey, IntegerField
+from django.db.models import (
+    CASCADE,
+    BooleanField,
+    CharField,
+    DateField,
+    FloatField,
+    ForeignKey,
+    IntegerField,
+)
 from django.utils.timezone import now
 
 from common.models import TimeStampedModel
@@ -7,7 +15,7 @@ from ..enums import EnumType
 
 
 class Transaction(TimeStampedModel):
-    amount = IntegerField(default=0)
+    amount = FloatField(default=0)
     user = ForeignKey("users.User", on_delete=CASCADE)
     category = ForeignKey(
         "accountant.Category", on_delete=CASCADE, null=True, blank=True

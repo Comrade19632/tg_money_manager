@@ -1,0 +1,45 @@
+@import "components/variables"
+  
+.item
+  max-height: 100px
+  display: flex
+  flex-direction: column
+
+  @media screen and (max-width: $tablet)
+      align-items: center
+  
+  .label
+    display: flex
+    align-items: center
+    margin-bottom: 8px
+    font-size: 13px
+    font-weight: 600
+    line-height: 1.23077
+    color: #6F767E
+  
+  .counter
+    font-size: 48px
+    font-weight: 600
+    line-height: 1
+    letter-spacing: -.03em
+
+  .indicator
+    display: inline-flex
+    align-items: center
+    margin-top: 8px
+    padding: 4px
+    color: #6F767E
+    font-size: 12px
+    font-weight: 700
+    line-height: 1.33333
+
+    .positive
+      color: green
+      &::before
+        content: '+'
+    
+    .negative
+      color: red
+
+    span
+      margin-left: 4px

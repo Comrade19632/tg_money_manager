@@ -1,16 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import (
-    SET_NULL,
-    BooleanField,
-    CharField,
-    CheckConstraint,
-    DateTimeField,
-    EmailField,
-    ForeignKey,
-    Manager,
-    Q,
-    UniqueConstraint,
-)
+from django.db.models import CharField, FloatField
 
 from common.models import TimeStampedModel
 
@@ -21,6 +10,7 @@ class User(AbstractUser, TimeStampedModel):
     telegram_id = CharField(max_length=128, unique=True, verbose_name="Telegram id")
     username = CharField(max_length=128, blank=True, null=True, verbose_name="username")
     USERNAME_FIELD = "telegram_id"
+    savings = FloatField(blank=True, null=True)
 
     objects = UserManager()
 
