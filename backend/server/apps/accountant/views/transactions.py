@@ -94,7 +94,7 @@ class TransactionsViewSet(ModelViewSet):
                     period_monthly_balance + period_daily_balance_before_date - savings
                 ) / (dates_len - date.day + 1)
 
-                day_diff = day_estimated_balance + day_balance
+                day_remaining_money = day_estimated_balance + day_balance
 
                 dates_data.append(
                     {
@@ -102,7 +102,7 @@ class TransactionsViewSet(ModelViewSet):
                         "day_outcome": day_outcome,
                         "day_balance": day_balance,
                         "day_estimated_balance": day_estimated_balance,
-                        "day_diff": day_diff,
+                        "day_diff": day_remaining_money,
                         "date": date,
                     }
                 )
@@ -173,7 +173,7 @@ class TransactionsViewSet(ModelViewSet):
             queryset = self.get_queryset()
 
             period_income, period_outcome, period_balance = get_period_statistic(
-                queryset=queryset
+                queryset=queryset.filter(is_correction=False)
             ).values()
 
             data = {
