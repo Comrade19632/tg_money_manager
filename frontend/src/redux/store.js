@@ -5,9 +5,11 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 import { isEmpty } from 'lodash'
 import { setToken, setCurrentUser } from './auth/actions'
 import authReducer from './auth/reducers'
+import categoryManagementReducer from './categoryManagement/reducer'
 
 const reducers = combineReducers({
   auth: authReducer,
+  categoryManagement: categoryManagementReducer,
 })
 
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunkMiddleWare)))
