@@ -15,6 +15,14 @@ from ..serializers import TransactionSerializer
 class TransactionsViewSet(ModelViewSet):
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
+    filter_fields = [
+        "category__id",
+        "enum_type",
+        "date",
+        "is_monthly",
+        "is_correction",
+        "title",
+    ]
 
     def get_queryset(self):
         queryset = super().get_queryset()

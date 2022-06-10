@@ -1,0 +1,76 @@
+@import "components/variables"
+
+.transactions
+  padding: 24px
+  margin: 20px 0
+  background: #FCFCFC
+  border-radius: 8px
+  display: flex
+  flex-direction: column
+  @media screen and (max-width: $tablet)
+    min-height: 350px
+
+  .header
+    width: 100%
+    display: flex
+    justify-content: flex-start
+
+    .title
+      font-size: 20px
+      font-weight: 600
+      line-height: 1.6
+      letter-spacing: -.02em
+
+      @media screen and (max-width: $tablet)
+        font-size: 13px
+
+  .content
+    width: 100%
+    display: flex
+    margin-top: 10px
+    flex: 1
+    justify-content: center
+
+    @media screen and (max-width: $tablet)
+      flex-direction: column
+
+    .totalBalance
+      display: flex
+      justify-content: center
+      width: 34%
+      border-right: 1px solid #EFEFEF
+
+      @media screen and (max-width: $tablet)
+        width: 100%
+        border: 0
+        border-bottom: 1px solid #EFEFEF
+
+    .income
+      display: flex
+      justify-content: center
+      width: 33%
+      border-right: 1px solid #EFEFEF
+
+      @media screen and (max-width: $tablet)
+        width: 100%
+        border: 0
+        border-bottom: 1px solid #EFEFEF
+
+    .outcome
+      display: flex
+      justify-content: center
+      width: 33%
+
+      @media screen and (max-width: $tablet)
+        width: 100%
+        border: 0
+
+.loader
+  display: flex
+  width: 100%
+  justify-content: center
+  align-items: center
+  align-content: center
+  svg
+    width: 100px
+    height: 100px

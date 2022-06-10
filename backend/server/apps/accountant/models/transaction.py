@@ -27,4 +27,4 @@ class Transaction(TimeStampedModel):
     title = CharField(max_length=128, null=True, blank=True)
 
     class Meta:
-        ordering = ("date",)
+        ordering = ("-date", "-created")

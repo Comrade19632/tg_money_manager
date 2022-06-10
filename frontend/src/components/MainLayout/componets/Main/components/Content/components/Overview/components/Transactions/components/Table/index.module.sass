@@ -1,0 +1,111 @@
+@import "components/variables"
+
+.table
+  display: flex
+  margin-top: 34px
+  font-style: normal
+  justify-content: center
+  width: 100%
+
+  @media screen and (max-width: $tablet)
+    margin-top: 27px
+
+.tableContainer
+  display: block
+  box-sizing: border-box
+  width: 100%
+  margin-bottom: 20px
+
+.flexTable
+  display: flex
+  flex-flow: row wrap
+  border-bottom: 1px solid #e2dcdc
+
+  &:hover
+    background: #F4F4F4
+
+  &:last-child
+    border: none
+
+.amountCol
+  order: 1
+  width: 20%
+
+  @media screen and (max-width: $tablet)
+    box-sizing: border-box
+    width: 100%
+    order: 1
+    &:after
+      content: ' р.'
+
+.typeCol
+  order: 2
+  width: 10%
+
+  @media screen and (max-width: $tablet)
+    box-sizing: border-box
+    width: 100%
+    order: 1
+
+.categoryCol
+  order: 3
+  width: 20%
+
+  .status
+    display: inline-block
+
+  @media screen and (max-width: $tablet)
+    width: 100%
+
+
+.dateCol
+  order: 4
+  width: 20%
+
+  @media screen and (max-width: $tablet)
+    width: 100%
+    order: 6
+
+.titleCol
+  order: 5
+  width: 20%
+
+  @media screen and (max-width: $tablet)
+    width: 100%
+    order: 6
+
+.flexRow
+  text-align: left
+  padding: 5px 5px
+
+  span
+    display: none
+
+    @media screen and (max-width: $tablet)
+      display: inline-block
+      font-weight: bolder
+
+.primaryText
+  font-weight: bold
+  line-height: 23px
+  font-size: 15px
+  color: black
+
+  @media screen and (max-width: $tablet)
+    font-size: 12px
+    line-height: 20px
+
+.header
+  padding-bottom: 12px
+  font-weight: normal
+  font-size: 17px
+  line-height: 20px
+  color: black
+  opacity: 0.5
+
+  @media screen and (max-width: $tablet)
+    display: none
+
+  &:hover
+    background: inherit
+
