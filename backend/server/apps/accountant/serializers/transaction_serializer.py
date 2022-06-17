@@ -1,14 +1,16 @@
-from rest_framework.serializers import ModelSerializer
+from unicodedata import category
 
-from ..models import Transaction
+from rest_framework.serializers import ModelSerializer, SlugRelatedField
+
+from ..models import Category, Transaction
 from .category_serializer import CategorySerializer
 
 
 class TransactionSerializer(ModelSerializer):
-    category = CategorySerializer()
+    category = CategorySerializer(read_only=True)
 
-    def save(self, user, **kwargs):
-        return super().save(user=user, **kwargs)
+    def save(self, user, category=None, **kwargs):
+        return super().save(user=user, category=category, **kwargs)
 
     class Meta:
         model = Transaction

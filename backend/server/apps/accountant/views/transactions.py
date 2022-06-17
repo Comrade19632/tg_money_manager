@@ -1,5 +1,5 @@
 import calendar
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -8,7 +8,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from apps.accountant.services import get_period_statistic
 
-from ..models import Transaction
+from ..models import Category, Transaction
 from ..serializers import TransactionSerializer
 
 
@@ -39,7 +39,11 @@ class TransactionsViewSet(ModelViewSet):
         return queryset.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        if category__id := self.request.data.get("category__id"):
+            category = Category.objects.filter(id=category__id).first()
+            serializer.save(user=self.request.user, category=category)
+        else:
+            serializer.save(user=self.request.user)
 
     @action(
         methods=["GET"],

@@ -7,6 +7,10 @@ from ..serializers import CategorySerializer
 class CategoriesViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    filter_fields = [
+        "enum_type",
+        "title",
+    ]
 
     def get_queryset(self):
         queryset = super().get_queryset()

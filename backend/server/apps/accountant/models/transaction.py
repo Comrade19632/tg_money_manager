@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db.models import (
     CASCADE,
     BooleanField,
@@ -7,7 +9,6 @@ from django.db.models import (
     ForeignKey,
     IntegerField,
 )
-from django.utils.timezone import now
 
 from common.models import TimeStampedModel
 
@@ -21,7 +22,7 @@ class Transaction(TimeStampedModel):
         "accountant.Category", on_delete=CASCADE, null=True, blank=True
     )
     enum_type = IntegerField(choices=EnumType.choices, default=EnumType.OUTCOME)
-    date = DateField(default=now)
+    date = DateField(default=date.today)
     is_monthly = BooleanField(default=False)
     is_correction = BooleanField(default=False)
     title = CharField(max_length=128, null=True, blank=True)
