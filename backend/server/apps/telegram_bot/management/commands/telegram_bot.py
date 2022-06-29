@@ -27,5 +27,7 @@ class Command(BaseCommand):
             [
                 types.BotCommand("add_income", "Добавить доход"),
                 types.BotCommand("add_outcome", "Добавить трату"),
+                types.BotCommand("add_monthly_income", "Добавить месячный доход"),
+                types.BotCommand("add_monthly_outcome", "Добавить месячную трату"),
             ]
         )
