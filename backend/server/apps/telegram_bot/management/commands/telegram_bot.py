@@ -25,13 +25,13 @@ class Command(BaseCommand):
         # команды в боте
         await dp.bot.set_my_commands(
             [
+                types.BotCommand("add_income", "Добавить доход"),
+                types.BotCommand("add_outcome", "Добавить трату"),
                 types.BotCommand("add_income_category", "Добавить категорию доходов"),
                 types.BotCommand("add_outcome_category", "Добавить категорию расходов"),
                 types.BotCommand("get_income_categories", "Мои категории доходов"),
                 types.BotCommand("get_outcome_categories", "Мои категории расходов"),
                 types.BotCommand("get_income_categories", "Мои категории доходов"),
-                types.BotCommand("add_income", "Добавить доход"),
-                types.BotCommand("add_outcome", "Добавить трату"),
                 types.BotCommand("add_monthly_income", "Добавить месячный доход"),
                 types.BotCommand("add_monthly_outcome", "Добавить месячную трату"),
                 types.BotCommand(
