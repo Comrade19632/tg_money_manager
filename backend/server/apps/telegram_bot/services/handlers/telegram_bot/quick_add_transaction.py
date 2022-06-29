@@ -62,6 +62,7 @@ async def process_category(message: types.Message, state: FSMContext):
             {
                 "enum_type": data["enum_type"],
                 "category__id": category["id"] if category else None,
+                "is_monthly": data["enum_type"] == EnumType.INCOME,
                 "amount": data["amount"],
             }
         )
