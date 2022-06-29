@@ -18,11 +18,13 @@ class Api:
         response = requests.get(url, headers=request_headers, params=params)
 
         if response.status_code == 200:
-            return loads(response.text)["results"]
+            return {"data": loads(response.text)["results"]}
         elif response.status_code == 400:
-            return response.text
+            return {"error": response.text}
         else:
-            return "Не удалось получить список категорий, внутренняя ошибка сервера"
+            return {
+                "error": "Не удалось получить список категорий, внутренняя ошибка сервера"
+            }
 
     def create_transaction(self, transaction):
         request_headers = self.get_auth_request_headers()
@@ -33,11 +35,13 @@ class Api:
         response = requests.post(url, headers=request_headers, json=transaction)
 
         if response.status_code == 201:
-            return "Транзакция успешно добавлена"
+            return {"data": "Транзакция успешно добавлена"}
         elif response.status_code == 400:
-            return response.text
+            return {"error": response.text}
         else:
-            return "Не удалось добавить транзакцию, внутренняя ошибка сервера"
+            return {
+                "error": "Не удалось получить список категорий, внутренняя ошибка сервера"
+            }
 
     def get_auth_request_headers(self):
         token = self._get_jwt_token()

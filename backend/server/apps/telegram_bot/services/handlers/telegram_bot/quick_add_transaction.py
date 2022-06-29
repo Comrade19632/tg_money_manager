@@ -20,13 +20,20 @@ class Form(StatesGroup):
 
 
 @dp.message_handler(regexp=r"^(?=.)([+-]([0-9]*)(\.([0-9]+))?)$", state="*")
-async def quick_create_transaction(message: types.Message, state: FSMContext):
+async def quick_add_transaction(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data["amount"] = message.text[1:]
         data["enum_type"] = get_type_of_transaction_by_message(message.text)
 
         api = Api(message.from_user.id)
-        categories = api.get_categories({"enum_type": data["enum_type"]})
+
+        response = api.get_categories({"enum_type": data["enum_type"]})
+        if error := response.get("error"):
+            await message.reply(error, reply_markup=markup)
+            await state.finish()
+
+        categories = response.get("data")
+
         data["categories"] = categories
 
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
@@ -66,7 +73,11 @@ async def process_category(message: types.Message, state: FSMContext):
                 "amount": data["amount"],
             }
         )
-        await message.reply(response, reply_markup=markup)
+        if error := response.get("error"):
+            await message.reply(error, reply_markup=markup)
+            await state.finish()
+
+        await message.reply(response.get("data"), reply_markup=markup)
         await state.finish()
 
 

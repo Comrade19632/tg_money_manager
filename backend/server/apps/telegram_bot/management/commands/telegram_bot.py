@@ -25,6 +25,6 @@ class Command(BaseCommand):
         # команды в боте
         await dp.bot.set_my_commands(
             [
-                types.BotCommand("echo", "Echo"),
+                types.BotCommand("add_income", "Добавить доход"),
             ]
         )
