@@ -28,7 +28,7 @@ const TableTransaction = ({
     </div>
     <div className={`${style.flexRow} ${style.dateCol}`} role="cell">
       <span>Дата: </span>
-      {date}
+      {date || '-'}
     </div>
     <div className={`${style.flexRow} ${style.titleCol}`} role="cell">
       <span>Название: </span>

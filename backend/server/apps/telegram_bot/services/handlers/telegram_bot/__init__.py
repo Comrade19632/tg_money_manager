@@ -1,3 +1,5 @@
+from .add_correction_income import dp
+from .add_correction_outcome import dp
 from .add_income import dp
 from .add_monthly_income import dp
 from .add_monthly_outcome import dp

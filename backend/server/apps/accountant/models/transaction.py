@@ -22,7 +22,7 @@ class Transaction(TimeStampedModel):
         "accountant.Category", on_delete=CASCADE, null=True, blank=True
     )
     enum_type = IntegerField(choices=EnumType.choices, default=EnumType.OUTCOME)
-    date = DateField(default=date.today)
+    date = DateField(default=date.today, null=True, blank=True)
     is_monthly = BooleanField(default=False)
     is_correction = BooleanField(default=False)
     title = CharField(max_length=128, null=True, blank=True)

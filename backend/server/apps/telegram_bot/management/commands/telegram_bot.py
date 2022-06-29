@@ -29,5 +29,11 @@ class Command(BaseCommand):
                 types.BotCommand("add_outcome", "Добавить трату"),
                 types.BotCommand("add_monthly_income", "Добавить месячный доход"),
                 types.BotCommand("add_monthly_outcome", "Добавить месячную трату"),
+                types.BotCommand(
+                    "add_correction_income", "Добавить коррекцию на увеличение бюджета"
+                ),
+                types.BotCommand(
+                    "add_correction_outcome", "Добавить коррекцию на уменьшение бюджета"
+                ),
             ]
         )
