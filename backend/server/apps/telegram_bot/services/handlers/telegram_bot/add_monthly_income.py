@@ -49,6 +49,7 @@ async def process_date(message: types.Message, state: FSMContext):
 
         response = api.get_categories({"enum_type": EnumType.INCOME})
         if error := response.get("error"):
+            markup = types.ReplyKeyboardRemove()
             await message.reply(error, reply_markup=markup)
             await state.finish()
 
@@ -111,6 +112,7 @@ async def process_title(message: types.Message, state: FSMContext):
         )
 
         if error := response.get("error"):
+            markup = types.ReplyKeyboardRemove()
             await message.reply(error, reply_markup=markup)
             await state.finish()
 
