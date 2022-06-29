@@ -11,23 +11,23 @@ from apps.telegram_bot.services import Api
 
 
 class Form(StatesGroup):
-    add_income_amount = State()
-    add_income_date = State()
-    add_income_category = State()
-    add_income_title = State()
+    add_outcome_amount = State()
+    add_outcome_date = State()
+    add_outcome_category = State()
+    add_outcome_title = State()
 
 
-@dp.message_handler(Command("add_income"))
-@dp.message_handler(text="Добавить доход")
-async def add_income(message: types.Message, state: FSMContext):
+@dp.message_handler(Command("add_outcome"))
+@dp.message_handler(text="Добавить трату")
+async def add_outcome(message: types.Message, state: FSMContext):
     await message.reply(
-        "Укажите сумму дохода",
+        "Укажите сумму траты",
     )
-    await Form.add_income_amount.set()
+    await Form.add_outcome_amount.set()
 
 
-@dp.message_handler(state=Form.add_income_amount)
-async def process_income_amount(message: types.Message, state: FSMContext):
+@dp.message_handler(state=Form.add_outcome_amount)
+async def process_outcome_amount(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data["amount"] = message.text
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
@@ -35,19 +35,19 @@ async def process_income_amount(message: types.Message, state: FSMContext):
     markup.add((datetime.today() - timedelta(1)).strftime("%Y-%m-%d"))
     markup.add((datetime.today() - timedelta(2)).strftime("%Y-%m-%d"))
     await message.reply(
-        "Укажите когда вы получили доход в формате YYYY-MM-DD, либо выберите один из предложенных вариантов",
+        "Укажите когда была совершена трата в формате YYYY-MM-DD, либо выберите один из предложенных вариантов",
         reply_markup=markup,
     )
-    await Form.add_income_date.set()
+    await Form.add_outcome_date.set()
 
 
-@dp.message_handler(state=Form.add_income_date)
+@dp.message_handler(state=Form.add_outcome_date)
 async def process_date(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data["date"] = message.text
         api = Api(message.from_user.id)
 
-        response = api.get_categories({"enum_type": EnumType.INCOME})
+        response = api.get_categories({"enum_type": EnumType.OUTCOME})
         if error := response.get("error"):
             await message.reply(error, reply_markup=markup)
             await state.finish()
@@ -64,13 +64,13 @@ async def process_date(message: types.Message, state: FSMContext):
         markup.add("Без категории")
 
     await message.reply(
-        "Выберите категорию дохода",
+        "Выберите категорию траты",
         reply_markup=markup,
     )
-    await Form.add_income_category.set()
+    await Form.add_outcome_category.set()
 
 
-@dp.message_handler(state=Form.add_income_category)
+@dp.message_handler(state=Form.add_outcome_category)
 async def process_category(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
@@ -81,10 +81,10 @@ async def process_category(message: types.Message, state: FSMContext):
         "Укажите название для траты",
         reply_markup=markup,
     )
-    await Form.add_income_title.set()
+    await Form.add_outcome_title.set()
 
 
-@dp.message_handler(state=Form.add_income_title)
+@dp.message_handler(state=Form.add_outcome_title)
 async def process_title(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         markup = types.ReplyKeyboardRemove()
@@ -101,7 +101,7 @@ async def process_title(message: types.Message, state: FSMContext):
         api = Api(message.from_user.id)
         response = api.create_transaction(
             {
-                "enum_type": EnumType.INCOME,
+                "enum_type": EnumType.OUTCOME,
                 "category__id": category["id"] if category else None,
                 "amount": data["amount"],
                 "date": data["date"],
