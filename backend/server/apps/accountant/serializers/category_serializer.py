@@ -12,6 +12,7 @@ class CategorySerializer(ModelSerializer):
     class Meta:
         model = Category
         fields = (
+            "created",
             "id",
             "title",
             "enum_type",

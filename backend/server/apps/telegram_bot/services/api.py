@@ -26,6 +26,38 @@ class Api:
                 "error": "Не удалось получить список категорий, внутренняя ошибка сервера"
             }
 
+    def create_category(self, category):
+        request_headers = self.get_auth_request_headers()
+
+        path = "accountant/categories/"
+        url = API_LINK_FOR_TELEGRAM_BOTS + path
+
+        response = requests.post(url, headers=request_headers, json=category)
+
+        if response.status_code == 201:
+            return {"data": "Категория успешно добавлена"}
+        elif response.status_code == 400:
+            return {"error": response.text}
+        else:
+            return {
+                "error": "Не удалось получить список категорий, внутренняя ошибка сервера"
+            }
+
+    def delete_category(self, category_id):
+        request_headers = self.get_auth_request_headers()
+
+        path = f"accountant/categories/{category_id}"
+        url = API_LINK_FOR_TELEGRAM_BOTS + path
+
+        response = requests.delete(url, headers=request_headers)
+
+        if response.status_code == 204:
+            return {"data": "Категория успешно удалена"}
+        elif response.status_code == 400:
+            return {"error": response.text}
+        else:
+            return {"error": "Не удалось удалить категорию, внутренняя ошибка сервера"}
+
     def create_transaction(self, transaction):
         request_headers = self.get_auth_request_headers()
 
@@ -40,7 +72,7 @@ class Api:
             return {"error": response.text}
         else:
             return {
-                "error": "Не удалось получить список категорий, внутренняя ошибка сервера"
+                "error": "Не удалось добавить транзакцию, внутренняя ошибка сервера"
             }
 
     def get_auth_request_headers(self):
