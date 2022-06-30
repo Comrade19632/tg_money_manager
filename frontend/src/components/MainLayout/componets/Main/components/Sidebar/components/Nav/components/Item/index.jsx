@@ -1,30 +1,30 @@
 import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 import style from './index.module.sass'
 
-const Item = ({ active, name, icon, isSidebarActive }) => (
-  <li className={classnames(style.item, {
-    [style.active]: active,
-  })}>
-    {icon}
-    <span className={classnames(style.name, {
-      [style.activeSidebar]: isSidebarActive,
-    })}>
-      {name}
-    </span>
-  </li>
+const Item = ({ name, icon, link, isSidebarActive }) => (
+  <li>
+    <NavLink to={link} className={({isActive}) =>`${isActive ? style.active : ''} ${style.item}`}>
+      {icon}
+      <span className={classnames(style.name, {
+        [style.activeSidebar]: isSidebarActive,
+      })}>
+        {name}
+      </span>
+    </NavLink>
+  </li >
 )
 
 Item.propTypes = {
-  active: PropTypes.bool,
   name: PropTypes.string,
+  link: PropTypes.string,
   icon: PropTypes.element,
   isSidebarActive: PropTypes.bool.isRequired,
 }
 
 Item.defaultProps = {
-  active: false,
   name: 'menu option',
   icon: null,
 }
