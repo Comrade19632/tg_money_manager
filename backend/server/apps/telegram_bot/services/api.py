@@ -1,4 +1,4 @@
-from json import dumps, loads
+from json import loads
 
 import requests
 
@@ -95,7 +95,7 @@ class Api:
                 "data": {
                     "access": response.json()["access"],
                     "refresh": response.json()["refresh"],
-                    "user": dumps(response.json()["user"]),
+                    "user": response.json()["user"],
                 }
             }
         else:

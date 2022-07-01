@@ -27,12 +27,12 @@ async def login(message: types.Message):
         return
 
     if settings.DEBUG:
-        url = f"http://localhost:3000/login?access={response['data']['access']}&refresh={response['data']['refresh']}&user={response['data']['user']}"
+        url = f"http://localhost:3000/login?access={response['data']['access']}&refresh={response['data']['refresh']}&id={response['data']['user']['id']}&telegram_id={response['data']['user']['telegram_id']}"
         await message.reply(url)
         return
 
     else:
-        url = f"https://tgmm.xyz/login?access={response['data']['access']}&refresh={response['data']['refresh']}&user={response['data']['user']}"
+        url = f"https://tgmm.xyz/login?access={response['data']['access']}&refresh={response['data']['refresh']}&id={response['data']['user']['id']}&telegram_id={response['data']['user']['telegram_id']}"
 
         login_button = InlineKeyboardButton("Авторизоваться на сайте", url=url)
         keyboard = InlineKeyboardMarkup().add(login_button)

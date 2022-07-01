@@ -11,8 +11,8 @@ const LoginViaBot = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
 
-    if (queryParams.has('access') && queryParams.has('refresh') && queryParams.has('user')) {
-      dispatch(loginViaBot(queryParams.get('access'), JSON.parse(queryParams.get('user'))))
+    if (queryParams.has('access') && queryParams.has('refresh') && queryParams.has('id') && queryParams.has('telegram_id')) {
+      dispatch(loginViaBot(queryParams.get('access'), { id: queryParams.get('id'), telegram_id: queryParams.get('telegram_id') }))
     }
 
   }, [dispatch, location.search])
@@ -20,7 +20,7 @@ const LoginViaBot = () => {
   return (
     <div className={style.loginViaBot}>
       <div>
-        Или войти с помощью <a href={(process.env.NODE_ENV === 'production') ? 'https://t.me/tgmm_xyz_bot?start' : 'https://t.me/tg_money_manager_bot_dev_bot?start' }>нашего телеграмм бота</a>.
+        Или войти с помощью <a href={(process.env.NODE_ENV === 'production') ? 'https://t.me/tgmm_xyz_bot?start' : 'https://t.me/tg_money_manager_bot_dev_bot?start'}>нашего телеграмм бота</a>.
         Напишите команду /start и перейдите по ссылке, которую отправит вам бот.
       </div>
       <div><span>*</span>Используйте этот способ, если не получается войти через виджет.</div>
