@@ -40,5 +40,6 @@ class Command(BaseCommand):
                 types.BotCommand(
                     "add_correction_outcome", "Добавить коррекцию на уменьшение бюджета"
                 ),
+                types.BotCommand("start", "Получить ссылку для логина на сайте"),
             ]
         )

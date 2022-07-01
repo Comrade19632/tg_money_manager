@@ -38,7 +38,7 @@ export const logout = () => (dispatch) => {
   toast.success('Logout successful.')
 }
 
-export const login = (userData) => (dispatch) => {
+export const loginViaWidjet = (userData) => (dispatch) => {
   axios
     .post('token/', userData)
     .then((response) => {
@@ -51,4 +51,10 @@ export const login = (userData) => (dispatch) => {
       dispatch(unsetCurrentUser())
       toastOnError(error)
     })
+}
+
+export const loginViaBot = (access, user) => (dispatch) => {
+  dispatch(setToken(access))
+  dispatch(setCurrentUser(user))
+  toast.success('Login successful.')
 }

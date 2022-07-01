@@ -1,4 +1,4 @@
-from json import loads
+from json import dumps, loads
 
 import requests
 
@@ -76,14 +76,27 @@ class Api:
             }
 
     def get_auth_request_headers(self):
-        token = self._get_jwt_token()
-        return {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+        access_token = self._get_jwt_tokens()["data"]["access"]
+        return {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json",
+        }
 
-    def _get_jwt_token(self):
+    def _get_jwt_tokens(self):
         path = "token/"
         url = API_LINK_FOR_TELEGRAM_BOTS + path
 
         data = {"id": self.telegram_id}
 
-        response = requests.post(url, json=data).json()
-        return response["access"]
+        response = requests.post(url, json=data)
+
+        if response.status_code == 200:
+            return {
+                "data": {
+                    "access": response.json()["access"],
+                    "refresh": response.json()["refresh"],
+                    "user": dumps(response.json()["user"]),
+                }
+            }
+        else:
+            return {"error": "Не удалось получить ссылку, внутренняя ошибка сервера"}

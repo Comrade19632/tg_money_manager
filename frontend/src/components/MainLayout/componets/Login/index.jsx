@@ -3,15 +3,15 @@ import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router'
-import { login } from 'redux/auth/actions'
+import { loginViaWidjet } from 'redux/auth/actions'
 
 import DevLoginForm from './components/DevLoginForm'
 import TelegramLoginButton from './components/TelegramLoginButton'
 import style from './index.module.sass'
+import LoginViaBot from './components/LoginViaBot'
 
 const Login = () => {
   const particlesInit = async (main) => {
-    console.log(main)
 
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -31,7 +31,7 @@ const Login = () => {
     return <Navigate to="/" replace />
   }
 
-  const handleLogin = (userData) => dispatch(login(userData))
+  const handleLogin = (userData) => dispatch(loginViaWidjet(userData))
 
   return (
     <>
@@ -112,6 +112,7 @@ const Login = () => {
         }} />
       <div className={style.container}>
         {(process.env.NODE_ENV === 'production') ? <TelegramLoginButton dataOnauth={handleLogin} /> : <DevLoginForm handleLogin={handleLogin} />}
+        <LoginViaBot/>
       </div>
     </>
   )

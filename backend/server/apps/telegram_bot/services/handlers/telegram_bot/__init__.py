@@ -8,6 +8,7 @@ from .add_outcome import dp
 from .add_outcome_category import dp
 from .get_income_categories import dp
 from .get_outcome_categories import dp
+from .login import dp
 from .quick_add_transaction import dp
 
 
