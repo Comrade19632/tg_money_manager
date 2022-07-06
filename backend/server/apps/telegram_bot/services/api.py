@@ -95,7 +95,6 @@ class Api:
                 "data": {
                     "access": response.json()["access"],
                     "refresh": response.json()["refresh"],
-                    "user": response.json()["user"],
                 }
             }
         else:

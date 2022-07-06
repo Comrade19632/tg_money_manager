@@ -1,5 +1,5 @@
 import { getSuccessType, getFailType } from 'common/api'
-import axios from 'axios'
+import axios from 'utils/axios'
 
 export const ACTION_TYPES = {
   GET_PERIOD_STATISTIC_DATA: 'GET_PERIOD_STATISTIC_DATA',

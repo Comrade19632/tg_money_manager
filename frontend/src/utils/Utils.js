@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'utils/axios'
 import { toast } from 'react-toastify'
 
 export const setAxiosAuthToken = (token) => {

@@ -1,19 +1,11 @@
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import axios from 'axios'
+import axios from 'utils/axios'
 
 import { setAxiosAuthToken, toastOnError } from 'utils/Utils'
 import { ACTION_TYPES } from './constants'
 
 toast.configure()
-
-export const setCurrentUser = (user) => (dispatch) => {
-  localStorage.setItem('user', JSON.stringify(user))
-  dispatch({
-    type: ACTION_TYPES.SET_CURRENT_USER,
-    payload: user,
-  })
-}
 
 export const setToken = (token) => {
   setAxiosAuthToken(token)
@@ -33,6 +25,24 @@ export const unsetCurrentUser = () => (dispatch) => {
   })
 }
 
+export const setCurrentUser = () => (dispatch) => {
+  axios
+    .get('users/get-self/')
+    .then((response) => {
+      const user = response.data
+      localStorage.setItem('user', JSON.stringify(user))
+      dispatch({
+        type: ACTION_TYPES.SET_CURRENT_USER,
+        payload: user,
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      dispatch(unsetCurrentUser())
+      toastOnError(error)
+    })
+}
+
 export const logout = () => (dispatch) => {
   dispatch(unsetCurrentUser())
   toast.success('Logout successful.')
@@ -42,19 +52,16 @@ export const loginViaWidjet = (userData) => (dispatch) => {
   axios
     .post('token/', userData)
     .then((response) => {
-      const { access, user } = response.data
+      const { access } = response.data
       dispatch(setToken(access))
-      dispatch(setCurrentUser(user))
       toast.success('Login successful.')
     })
     .catch((error) => {
-      dispatch(unsetCurrentUser())
       toastOnError(error)
     })
 }
 
-export const loginViaBot = (access, user) => (dispatch) => {
+export const loginViaBot = (access) => (dispatch) => {
   dispatch(setToken(access))
-  dispatch(setCurrentUser(user))
   toast.success('Login successful.')
 }

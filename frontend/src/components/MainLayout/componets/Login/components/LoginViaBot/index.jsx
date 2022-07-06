@@ -11,8 +11,8 @@ const LoginViaBot = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
 
-    if (queryParams.has('access') && queryParams.has('refresh') && queryParams.has('id') && queryParams.has('telegram_id')) {
-      dispatch(loginViaBot(queryParams.get('access'), { id: queryParams.get('id'), telegram_id: queryParams.get('telegram_id') }))
+    if (queryParams.has('access') && queryParams.has('refresh')) {
+      dispatch(loginViaBot(queryParams.get('access')))
     }
 
   }, [dispatch, location.search])

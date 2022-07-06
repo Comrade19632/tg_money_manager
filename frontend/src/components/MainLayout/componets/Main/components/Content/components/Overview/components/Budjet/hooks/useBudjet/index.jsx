@@ -1,18 +1,9 @@
-import { useCallback, useReducer, useEffect } from 'react'
-import axios from 'axios'
+import { useCallback, useReducer } from 'react'
 
 import { getBudjetData as getBudjetDataAction } from './actions'
 import reducer, { initialState } from './reducer'
 
 const useBudjet = () => {
-  useEffect(() => {
-    if (window.location.origin === 'http://localhost:3000') {
-      axios.defaults.baseURL = 'http://localhost/api/'
-    } else {
-      axios.defaults.baseURL = `${window.location.origin}/api/`
-    }
-  })
-
   const [{
     dayEstimatedBalance,
     dayRemainingMoney,
