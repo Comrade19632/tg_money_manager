@@ -12,7 +12,7 @@ export const getBudjetData = async (
     type: ACTION_TYPES.GET_BUDJET_DATA,
   })
 
-  const response = await axios.get('accountant/transactions/overview-budjet')
+  const response = await axios.get('accountant/transactions/overview-budjet/')
 
   if (response.status === 200) {
     dispatch({

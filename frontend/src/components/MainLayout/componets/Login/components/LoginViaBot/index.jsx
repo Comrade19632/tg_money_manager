@@ -12,7 +12,7 @@ const LoginViaBot = () => {
     const queryParams = new URLSearchParams(location.search)
 
     if (queryParams.has('access') && queryParams.has('refresh')) {
-      dispatch(loginViaBot(queryParams.get('access')))
+      dispatch(loginViaBot(queryParams.get('access'), queryParams.get('refresh')))
     }
 
   }, [dispatch, location.search])

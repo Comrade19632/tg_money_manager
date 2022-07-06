@@ -12,7 +12,7 @@ export const getPeriodStatisticData = async (
     type: ACTION_TYPES.GET_PERIOD_STATISTIC_DATA,
   })
 
-  const response = await axios.get('accountant/transactions/overview-period-statistic',
+  const response = await axios.get('accountant/transactions/overview-period-statistic/',
     { params: (startDate && endDate) ? { start_date: startDate, end_date: endDate } : null })
 
   if (response.status === 200) {

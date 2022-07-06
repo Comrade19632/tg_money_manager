@@ -7,18 +7,19 @@ import { ACTION_TYPES } from './constants'
 
 toast.configure()
 
-export const setToken = (token) => {
-  setAxiosAuthToken(token)
-  localStorage.setItem('token', token)
+export const login = (accessToken, refreshToken) => {
+  setAxiosAuthToken(accessToken)
+  localStorage.setItem('accessToken', accessToken)
+  localStorage.setItem('refreshToken', refreshToken)
   return {
-    type: ACTION_TYPES.SET_TOKEN,
-    payload: token,
+    type: ACTION_TYPES.LOGIN,
   }
 }
 
 export const unsetCurrentUser = () => (dispatch) => {
   setAxiosAuthToken('')
-  localStorage.removeItem('token')
+  localStorage.removeItem('accessToken')
+  localStorage.removeItem('refreshToken')
   localStorage.removeItem('user')
   dispatch({
     type: ACTION_TYPES.UNSET_CURRENT_USER,
@@ -36,11 +37,6 @@ export const setCurrentUser = () => (dispatch) => {
         payload: user,
       })
     })
-    .catch((error) => {
-      console.log(error)
-      dispatch(unsetCurrentUser())
-      toastOnError(error)
-    })
 }
 
 export const logout = () => (dispatch) => {
@@ -52,8 +48,8 @@ export const loginViaWidjet = (userData) => (dispatch) => {
   axios
     .post('token/', userData)
     .then((response) => {
-      const { access } = response.data
-      dispatch(setToken(access))
+      const { access, refresh } = response.data
+      dispatch(login(access, refresh))
       toast.success('Login successful.')
     })
     .catch((error) => {
@@ -61,7 +57,7 @@ export const loginViaWidjet = (userData) => (dispatch) => {
     })
 }
 
-export const loginViaBot = (access) => (dispatch) => {
-  dispatch(setToken(access))
+export const loginViaBot = (access, refresh) => (dispatch) => {
+  dispatch(login(access, refresh))
   toast.success('Login successful.')
 }
