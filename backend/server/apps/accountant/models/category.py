@@ -14,5 +14,10 @@ class Category(ActiveModel, TimeStampedModel):
 
     class Meta:
         constraints = [
-            UniqueConstraint(fields=["title", "user", "enum_type"], name="unique_title")
+            UniqueConstraint(
+                fields=["title", "user", "enum_type"], name="unique_title"
+            ),
+            UniqueConstraint(
+                fields=["color", "user", "enum_type"], name="unique_color"
+            ),
         ]
