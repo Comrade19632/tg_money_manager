@@ -65,6 +65,7 @@ if DEBUG:
     )
 
 REST_FRAMEWORK = {
+    "EXCEPTION_HANDLER": "common.utils.drf_custom_exception_handler",
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
