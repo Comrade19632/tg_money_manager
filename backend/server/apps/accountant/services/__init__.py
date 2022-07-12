@@ -1,1 +1,2 @@
+from .generate_random_hex import generate_random_hex
 from .get_period_statistic import get_period_statistic

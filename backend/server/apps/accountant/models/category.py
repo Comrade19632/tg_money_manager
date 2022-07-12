@@ -3,12 +3,14 @@ from django.db.models import CASCADE, CharField, ForeignKey, IntegerField, Uniqu
 from common.models import ActiveModel, TimeStampedModel
 
 from ..enums import EnumType
+from ..services import generate_random_hex
 
 
 class Category(ActiveModel, TimeStampedModel):
     title = CharField(max_length=128, default="Без названия")
     user = ForeignKey("users.User", on_delete=CASCADE)
     enum_type = IntegerField(choices=EnumType.choices, default=EnumType.OUTCOME)
+    color = CharField(default=generate_random_hex, max_length=7)
 
     class Meta:
         constraints = [
