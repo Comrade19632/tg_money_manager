@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import style from './index.module.sass'
 import MenuIcon from './components/MenuIcon'
+import AddTransaction from './components/AddTransaction'
 
 const Header = ({ isSidebarActive, setSidebarActive }) => (
   <div className={style.header} >
-    <div className={style.sidebarSwitcher}>
-      <MenuIcon isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
-    </div>
+    <MenuIcon isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
+    <AddTransaction/>
   </div>
 )
 

@@ -1,10 +1,15 @@
+@import "components/variables"
 
 .menu
+  display: none !important
   background-color: transparent
   border: none
   cursor: pointer
   display: flex
   padding: 0
+
+  @media screen and (max-width: $mobile) 
+    display: block !important
 
 .line
   fill: none
