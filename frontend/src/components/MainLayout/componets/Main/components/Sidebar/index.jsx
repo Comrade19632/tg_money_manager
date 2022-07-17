@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import useMedia, { DEVICES } from 'hooks/useMedia'
+import useOutsideClick from 'hooks/useOutsideClick'
 import Logo from './components/Logo'
 import Nav from './components/Nav'
 import style from './index.module.sass'
@@ -19,8 +20,15 @@ const Sidebar = ({ isSidebarActive, setSidebarActive }) => {
     setSidebarActive(!isSidebarActive)
   }
 
+  const ref = useRef()
+
+  useOutsideClick(ref, () => {
+    if (isSidebarActive) setSidebarActive(false)
+  })
+
   return (
     <div
+      ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={classnames(style.sidebar, {
