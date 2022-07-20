@@ -5,17 +5,17 @@ import style from './index.module.sass'
 import DashboardIcon from './NavigationIcones/DashboardIcon'
 import ProfileIcon from './NavigationIcones/ProfileIcon'
 
-const Nav = ({ isSidebarActive }) => (
+const Nav = ({ isSidebarOpened }) => (
   <nav className={style.nav}>
     <ul>
       <Item
-        isSidebarActive={isSidebarActive}
+        isSidebarOpened={isSidebarOpened}
         name='Главная'
         icon={<DashboardIcon />}
         link="/"
       />
       <Item
-        isSidebarActive={isSidebarActive}
+        isSidebarOpened={isSidebarOpened}
         name='Мой Профиль'
         icon={<ProfileIcon />}
         link="/profile"
@@ -25,7 +25,7 @@ const Nav = ({ isSidebarActive }) => (
 )
 
 Nav.propTypes = {
-  isSidebarActive: PropTypes.bool.isRequired,
+  isSidebarOpened: PropTypes.bool.isRequired,
 }
 
 export default Nav

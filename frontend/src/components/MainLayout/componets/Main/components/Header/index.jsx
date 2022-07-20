@@ -4,16 +4,16 @@ import style from './index.module.sass'
 import MenuIcon from './components/MenuIcon'
 import AddTransaction from './components/AddTransaction'
 
-const Header = ({ isSidebarActive, setSidebarActive }) => (
+const Header = ({ isSidebarOpened, setSidebarOpened }) => (
   <div className={style.header} >
-    <MenuIcon isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
+    <MenuIcon isSidebarOpened={isSidebarOpened} setSidebarOpened={setSidebarOpened} />
     <AddTransaction/>
   </div>
 )
 
 Header.propTypes = {
-  isSidebarActive: PropTypes.bool.isRequired,
-  setSidebarActive: PropTypes.func.isRequired
+  isSidebarOpened: PropTypes.bool.isRequired,
+  setSidebarOpened: PropTypes.func.isRequired
 }
 
 export default Header

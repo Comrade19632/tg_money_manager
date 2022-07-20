@@ -4,9 +4,6 @@ const useOutsideClick = (ref, callback) => {
   const handleClick = e => {
     if ((window.getComputedStyle(ref.current).getPropertyValue('visibility') === 'visible')&& ref.current && !ref.current.contains(e.target)) {
       callback()
-      console.log('loaded')
-      console.log(ref.current)
-      console.log(window.getComputedStyle(ref.current).getPropertyValue('visibility'))
     }
   }
 

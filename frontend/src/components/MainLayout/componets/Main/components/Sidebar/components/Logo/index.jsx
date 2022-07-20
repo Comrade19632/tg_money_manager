@@ -4,16 +4,16 @@ import PropTypes from 'prop-types'
 import style from './index.module.sass'
 import logo from './logo-dark.png'
 
-const Logo = ({ isSidebarActive }) => (
+const Logo = ({ isSidebarOpened }) => (
   <a className={style.logo} href='/'>
     <img className={classNames({
-      [style.active]: isSidebarActive
+      [style.active]: isSidebarOpened
     })} alt='logo' src={logo} />
   </a>
 )
 
 Logo.propTypes = {
-  isSidebarActive: PropTypes.bool.isRequired
+  isSidebarOpened: PropTypes.bool.isRequired
 }
 
 export default Logo
