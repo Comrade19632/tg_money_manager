@@ -1,29 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { uniqueId } from 'lodash'
 
 const RadioSlider = ({ radioChoices, currentRadioValue, setCurrentRadioValue }) => (
   <div>
-    {radioChoices.map((radioChoice) => (
-      <div key={radioChoice.id}>
-        <input
-          id={radioChoice.id}
-          name={radioChoice.label}
-          type="radio"
-          value={radioChoice.label}
-          onChange={(e) => setCurrentRadioValue(e.target.value)}
-          checked={currentRadioValue === radioChoice.label}
-        />
-        <label htmlFor={radioChoice.id}>{radioChoice.label}</label>
-      </div>
-    ))}
+    {radioChoices.map((radioChoice) => {
+      const id = uniqueId(`${radioChoice}_`)
+      return (
+        <div key={id}>
+          <input
+            id={id}
+            name={radioChoice}
+            type="radio"
+            value={radioChoice}
+            onChange={(e) => setCurrentRadioValue(e.target.value)}
+            checked={currentRadioValue === radioChoice}
+          />
+          <label htmlFor={id}>{radioChoice}</label>
+        </div>
+      )
+    })}
   </div>
 )
 
 RadioSlider.propTypes = {
-  radioChoices: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    label: PropTypes.string,
-  })).isRequired,
+  radioChoices: PropTypes.arrayOf(PropTypes.string),
   currentRadioValue: PropTypes.string,
   setCurrentRadioValue: PropTypes.func,
 }

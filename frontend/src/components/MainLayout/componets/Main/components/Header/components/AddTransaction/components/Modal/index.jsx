@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { uniqueId } from 'lodash'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import useOutsideClick from 'hooks/useOutsideClick'
@@ -19,9 +18,9 @@ const Modal = ({ isModalOpened, setModalOpened }) => {
     if (isModalOpened) setModalOpened(false)
   }, style.opened, true)
 
-  const radioChoices = [{ label: 'test', id: uniqueId('test_') }, { label: '312', id: uniqueId('312_') }]
+  const radioChoices = ['test', '32131']
 
-  const [currentRadioValue, setCurrentRadioValue] = useState(radioChoices[0].label)
+  const [currentRadioValue, setCurrentRadioValue] = useState(radioChoices[0])
 
   return (
     <div ref={ref} className={classNames(style.modal, {
