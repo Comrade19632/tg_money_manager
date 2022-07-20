@@ -1,0 +1,19 @@
+.modal
+  position: absolute
+  left: 50%
+  top: 0
+  transform: translate(-50%, -50%)
+  background-color: grey
+  z-index: 999999
+  visibility: hidden
+  opacity: 0
+  height: 300px
+  width: 300px
+  transition: transform .3s,opacity .3s, visibility .3s, top .3s,-webkit-transform .3s
+
+  &.opened
+    -webkit-transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)
+    visibility: visible
+    opacity: 1
+    top: 50%

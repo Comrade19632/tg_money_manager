@@ -7,7 +7,7 @@ import Content from './components/Content'
 import style from './index.module.sass'
 
 const Main = () => {
-  const [isSidebarActive, setSidebarActive] = useState(false)
+  const [isSidebarOpened, setSidebarOpened] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -16,9 +16,9 @@ const Main = () => {
 
   return (
     <div className={style.main}>
-      <Sidebar isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
+      <Sidebar isSidebarOpened={isSidebarOpened} setSidebarOpened={setSidebarOpened} />
       <div className={style.pageInner}>
-        <Header isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
+        <Header isSidebarOpened={isSidebarOpened} setSidebarOpened={setSidebarOpened} />
         <Content />
       </div>
     </div>
