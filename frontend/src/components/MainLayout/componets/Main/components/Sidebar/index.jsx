@@ -24,7 +24,7 @@ const Sidebar = ({ isSidebarOpened, setSidebarOpened }) => {
 
   useOutsideClick(ref, () => {
     if (isSidebarOpened) setSidebarOpened(false)
-  })
+  }, style.opened)
 
   return (
     <div

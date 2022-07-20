@@ -6,8 +6,6 @@ import style from './index.module.sass'
 const MenuIcon = ({ isSidebarOpened, setSidebarOpened }) => {
   const sidebarSwitcherOnClick = () => setSidebarOpened(!isSidebarOpened)
 
-  console.log(isSidebarOpened)
-
   return (
     <button onClick={sidebarSwitcherOnClick} className={classNames(style.menu, {
       [style.opened]: isSidebarOpened
